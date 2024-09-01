@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="./284702706_107684228626280_4969446000244040217_n.jpg">
+    <style>
+        body {
+            font-family: "Alegreya", serif;
+            background-image: url(./4k-marble-background-y3feopeupar1euf2.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #daeded;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .info {
+            background-color: #f0a78e;
+            color: white;
+        }
+        .info button {
+            transition: background-color 0.3s ease;
+        }
+        .info button:hover {
+            background-color: #949d96;
+        }
+        .register-button {
+            background-color: #f0a78e;
+            color: white;
+        }
+        .register-button:hover {
+            background-color: #adb5bd;
+        }
+
+        #termsModal {
+            display: none;
+        }
+        #termsModal:target {
+            display: flex;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .modal-header,
+        .modal-footer {
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .close-modal:before {
+            content: '×';
+            font-size: 1.5rem;
+            color: gray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container bg-white rounded-lg shadow-lg overflow-hidden flex">
+        <!-- Information Section -->
+        <div class="info w-1/2 p-8">
+            <h2 class="text-2xl font-bold mb-4">INFORMATION</h2>
+            <img src="https://www.beaches.com/blog/content/images/2019/11/Beaches-Turks-Caicos-Beach-Wedding6.jpg" alt="Information Image">
+            <p class="mb-2 py-4">Join us in a vibrant environment where your ambitions are supported, and your goals are within reach.</p> 
+            <p class="mb-4">From personalized resources to expert guidance, we're here to make your journey as fulfilling and successful as possible.</p>
+            <p>Take the first step towards unlocking your potential. Register now and gain access to exclusive content, community events, and much more. Let's achieve greatness together!</p>
+            <a href="./login.html"><button class="bg-white text-blue-900 font-semibold py-2 px-4 my-4 rounded-lg shadow-md">Have an account</button></a>
+        </div>
+        <!-- Registration Form Section -->
+        <div class="w-1/2 p-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-6">REGISTRATION FORM</h2>
+            <form>
+                <div class="mb-4">
+                    <div class="flex space-x-4">
+                        <div class="w-1/2">
+                            <label for="firstName" class="block text-gray-700">First Name</label>
+                            <input type="text" id="firstName" class="w-full px-3 py-2 border rounded-lg" placeholder="First Name" required>
+                        </div>
+                        <div class="w-1/2">
+                            <label for="lastName" class="block text-gray-700">Last Name</label>
+                            <input type="text" id="lastName" class="w-full px-3 py-2 border rounded-lg" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Your Email</label>
+                    <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg" placeholder="Email" required>
+                </div>
+                <div class="mb-4">
+                    <label for="mobile" class="block text-gray-700">Mobile Number</label>
+                    <input type="tel" id="mobile" class="w-full px-3 py-2 border rounded-lg" placeholder="Mobile Number" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Password</label>
+                    <input type="password" id="password" class="w-full px-3 py-2 border rounded-lg" placeholder="Password" required>
+                </div>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-gray-700">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="w-full px-3 py-2 border rounded-lg" placeholder="Confirm Password" required>
+                </div>
+                <div class="mb-4">
+                    <input type="checkbox" id="terms" class="mr-2" required>
+                    <label for="terms" class="text-gray-700 text-sm">I agree to the <a href="#termsModal" class="text-blue-500 underline">Terms and Conditions</a></label>
+                </div>
+                <button type="submit" class="register-button w-full font-bold py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition">Register</button>
+            </form>
+        </div>
+    </div>
+    <!--Modal Section------->
+    <div id="termsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header flex justify-between items-center">
+                <h2 class="text-xl font-bold">Terms and Conditions</h2>
+                <a href="#" class="close-modal text-gray-500"></a>
+            </div>
+            <div class="modal-body">
+                <h1 class="text-3xl font-bold text-gray-800 mb-6">Terms and Conditions</h1>
+        
+        <p class="mb-6">
+            Welcome to our website! These terms and conditions outline the rules and regulations for the use of our website, located at [your website URL].
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">1. Introduction</h2>
+        <p class="mb-6">
+            By accessing this website, you agree to be bound by these terms and conditions. If you do not agree with any part of these terms, you must not use our website.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">2. Intellectual Property</h2>
+        <p class="mb-6">
+            The content on this website, including text, graphics, logos, and images, is the intellectual property of [Your Company Name] and is protected by copyright laws.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">3. User Responsibilities</h2>
+        <p class="mb-6">
+            Users agree to use the website in accordance with applicable laws and not to engage in any activity that could damage, disable, or impair the website.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">4. Limitation of Liability</h2>
+        <p class="mb-6">
+            We are not liable for any damages arising out of the use or inability to use our website, including but not limited to direct, indirect, incidental, or consequential damages.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">5. Changes to Terms</h2>
+        <p class="mb-6">
+            We reserve the right to modify these terms and conditions at any time. Any changes will be posted on this page, and it is your responsibility to review these terms periodically.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">6. Governing Law</h2>
+        <p class="mb-6">
+            These terms and conditions are governed by and construed in accordance with the laws of [Your State/Country], and any disputes will be subject to the exclusive jurisdiction of the courts in [Your State/Country].
+        </p>
+
+        <p class="text-gray-600">
+            If you have any questions about these terms and conditions, please contact us at [Your Contact Information].
+        </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="register-button py-2 px-4 rounded-lg">Close</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
